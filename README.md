@@ -28,8 +28,10 @@ A small, **read-only** [MCP](https://modelcontextprotocol.io) server for the Inn
 
 ### 2a. Claude Desktop: one-click bundle (recommended)
 1. Download **`inception-mcp.mcpb`** from the [latest release](https://github.com/ndwalters/inception-mcp/releases/latest), then double-click it, or drag it into Claude Desktop (or Settings → Extensions → Advanced settings → Install Extension).
-2. Click **Install**, then fill in the form: controller URL and User API Token.
-3. Enable the extension. That's it.
+2. Click **Install**, then fill in the form using:
+   1. The controller URL (either local `http://192.168.1.50` or through your SkyTunnel serial `https://skytunnel.com.au/Inception/IN12345678`).
+   2. The previously created Inception User API Token.
+3. Enable the extension.
 
 No Node.js install, no config-file editing: Claude Desktop runs the bundle with its built-in Node runtime, and the token is marked sensitive so it is stored in your OS credential store (Windows Credential Manager / macOS Keychain) rather than in a plain-text JSON file. To change the URL or token later: Settings → Extensions → Inner Range Inception → Configure.
 
@@ -38,7 +40,7 @@ Needs Node.js 20+.
 ```bash
 npm install          # also builds dist/ via the prepare script
 claude mcp add inception --scope user \
-  -e INCEPTION_URL=http://192.168.1.50 \
+  -e INCEPTION_URL=<your Inception URL>\
   -e INCEPTION_API_TOKEN=<your User API Token> \
   -- node "$(pwd)/dist/index.js"
 ```
@@ -74,24 +76,6 @@ curl http://<inception-ip>/api/protocol-version
 ```
 If the panel is unreachable at startup the server still starts (with a warning) and tools return a clear error until it is back.
 
-## What is not included
+## Screenshot
 
-- Live updates via the `monitor-updates` long poll. Each call fetches current state on demand instead.
-- Users, credentials, doors' attached-reader control, lift floors and storage units.
-
-## Releasing
-Bump `version` in `package.json`, commit, then push a matching tag:
-```bash
-git tag v0.1.2 && git push origin v0.1.2
-```
-GitHub Actions runs the tests, builds `inception-mcp.mcpb` and attaches it to a new release.
-
-## Development
-
-```bash
-npm install
-npm run build
-npm test   # mock panel + real server + MCP client, over HTTP and stdio
-```
-
-State and event tables come from the Inception REST API documentation (Data Models: `AreaPublicStates`, `DoorPublicStates`, `InputPublicStates`, `OutputPublicStates`, `Message`). Unknown state bits are reported as `Unknown(0x..)` rather than dropped.
+![Inner Range Inception extension in Claude Desktop](screenshot.png)

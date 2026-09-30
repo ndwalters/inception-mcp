@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "inception-mcp",
   "display_name": "Inner Range Inception (read-only)",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Read-only access to an Inner Range Inception security controller. Requires Inception firmware 7.3.0.8528 or later (REST API protocol version 18).",
   "long_description": "Connects Claude to an Inner Range Inception alarm and access controller over its local REST API. Read-only by design: it can list areas, doors, inputs and outputs with decoded states and query the review event log, but it cannot arm, disarm, unlock, toggle outputs or change configuration. **Requires Inception firmware 7.3.0.8528 or later (REST API protocol version 18).** The server checks this when it starts and will not run against older firmware.",
   "author": {
@@ -54,7 +54,7 @@
     "inception_url": {
       "type": "string",
       "title": "Inception controller URL",
-      "description": "Address of the controller on your network, e.g. http://192.168.1.50",
+      "description": "Local address (e.g. http://192.168.1.50) or your SkyTunnel URL (e.g. https://skytunnel.com.au/Inception/IN12345678)",
       "required": true
     },
     "api_token": {
