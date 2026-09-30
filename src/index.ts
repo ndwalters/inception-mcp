@@ -13,7 +13,7 @@ const log = (...a: unknown[]) => console.error(new Date().toISOString(), ...a);
 
 function buildServer(client: InceptionClient, cfg: Config): McpServer {
   const server = new McpServer(
-    { name: "inception-mcp", version: "0.1.2" },
+    { name: "inception-mcp", version: "0.1.3" },
     {
       instructions:
         "Read-only access to an Inner Range Inception security controller: area/door/input/output states and the review event log. " +

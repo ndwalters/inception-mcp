@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "inception-mcp",
   "display_name": "Inner Range Inception (read-only)",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Read-only access to an Inner Range Inception security controller. Requires Inception firmware 7.3.0.8528 or later (REST API protocol version 18).",
   "long_description": "Connects Claude to an Inner Range Inception alarm and access controller over its local REST API. Read-only by design: it can list areas, doors, inputs and outputs with decoded states and query the review event log, but it cannot arm, disarm, unlock, toggle outputs or change configuration. **Requires Inception firmware 7.3.0.8528 or later (REST API protocol version 18).** The server checks this when it starts and will not run against older firmware.",
   "author": {
